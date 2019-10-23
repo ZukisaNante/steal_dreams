@@ -13,9 +13,11 @@ $(document).ready(function todayDate(){
 // create date function
 function todaysDate(){
   var todayDate = new Date();
+  console.log(todayDate);
   $("#datum_vandaag").html(todayDate);
 }
 $(document).ready(function(){
   todaysDate();
-})
+  console.log(todays.Date());
+});
 
