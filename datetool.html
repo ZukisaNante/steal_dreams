@@ -12,39 +12,45 @@
 <body>
     <!-- Container  -->
     <div class="container">
-        <h2>Product Expectations</h2>
-
-        <div class="container">
-            <form action="/action_page.php">
-                <div class="row">
-                    <div class="col-25">
-                        <label for="fname">Datum Vandaag</label>
-                    </div>
-                    <div class="col-75">
-                        <input type="text" id="fname" name="firstname" placeholder="Datum Vandaag...">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-25">
-                        <label for="lname">Aantal Werkdagen Productie</label>
-                    </div>
-                    <div class="col-75">
-                        <input type="text" id="lname" name="lastname" placeholder="Aantal Werkdagen Productie...">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-25">
-                        <label for="subject">Subject</label>
-                    </div>
-                    <div class="col-75">
-                        <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
-                    </div>
-                </div>
-                <div class="row">
-                    <input type="submit" value="Bereiken">
-                </div>
-            </form>
+        <!-- navbar begins -->
+        <div class="nav">
+            <ul class="sidebar">
+                <li><a class="active" href="#home">Bereiken Begin Datum</a></li>
+                <li><a href="#news">Bereiken Eind Datum</a></li>
+            </ul>
         </div>
+        <!-- navbar ends -->
+        <!-- form starts -->
+        <form action="/action_page.php">
+            <div class="row">
+                <div class="col-25">
+                    <label for="fname">Datum Vandaag</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" id="fname" name="firstname" placeholder="Datum Vandaag...">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="lname">Aantal Werkdagen Productie</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" id="lname" name="lastname" placeholder="Aantal Werkdagen Productie...">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="subject">Subject</label>
+                </div>
+                <div class="col-75">
+                    <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <input type="submit" value="Bereiken">
+            </div>
+        </form>
+    </div>
 
 
 </body>
