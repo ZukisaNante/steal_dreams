@@ -47,11 +47,22 @@ function deliveryDays() {
     var start = new Date("2019-10-25T00:00:00Z"),
         end = new Date("2019-11-10T00:00:00Z"),
         holiday = [
-            new Date("2019-10-27T00:00:00Z"),
-            new Date("2030-05-03T00:00:00Z")
-        ],
-        i = holiday.length,
-        n_days = 0;
+            ["New Years Day", [1, 1]],
+            ["Easter Monday", [22, 4]],
+            ["Christmas Day", [12, 25]],
+            ["Labour Day", [30, 5]],
+            ["Pentecost Monday", [10, 6]],
+            ["Belgium National Day ", [21, 6]],
+            [" Assumption Day ", [15, 8]],
+            ["Presidents Day ", [3, 1, 2]],
+            ["All Saints’ Day ", [1, 11]],
+            ["Armistice Day", [11, 11]]
+        ];
+    /*  holiday = [
+                          new Date("2019-10-27T00:00:00Z"),
+                          new Date("2030-05-03T00:00:00Z")
+                      ], */
+    (i = holiday.length), (n_days = 0);
     while (i--) {
         // loop over holidays
         if (holiday[i] >= start)
@@ -61,32 +72,11 @@ function deliveryDays() {
         if (start.getUTCDay()) n_days = n_days + 1; // not sunday
         start.setUTCHours(24); // add a day
     }
-    $("p.leverbaar").html(
+    $("p.delivery").html(
         "Uw product zal binnen" + " " + n_days + " " + "dagen geleveerd worden!"
     );
     console.log(n_days); // 12
 }
-
-// subtracting days from the input field
-
-/* $(document).ready(function() {
-    //this calculates values automatically
-    sum();
-    $("#num1, #num2").on("keydown keyup", function() {
-        sum();
-    });
-});
-
-function sum() {
-    var num1 = document.getElementById("werkdagen").value;
-    var num2 = document.getElementsByClassName("leverbaar").value;
-    //var result = parseInt(num1) + parseInt(num2);
-    var result1 = parseInt(num2) - parseInt(num1);
-    if (!isNaN(result)) {
-        document.getElementById("sum").value = result;
-        document.getElementById("subt").value = result1;
-    }
-} */
 
 // Function delivery date 2
 function delivery() {
@@ -103,7 +93,7 @@ function delivery() {
             total_days++;
         }
     }
-
+    $("p.delivery").html(deliveryDate);
     $("p.leverbaar").html("Uw product kan geleverd worden op" + deliveryDate);
     console.log(today);
     console.log(deliveryDate);
