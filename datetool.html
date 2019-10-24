@@ -6,7 +6,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="css/style.css" rel="stylesheet">
-  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="./oa_datetool_script.js"></script>
     <link rel="stylesheet" href="./style.css">
 </head>
 
@@ -22,13 +23,13 @@
         </div>
         <!-- navbar ends -->
         <!-- form starts -->
-        <form action="/action_page.php">
+        <form action="" class="showHider">
             <div class="row">
                 <div class="col-25">
                     <label for="datum_vandaag">Datum Vandaag</label>
                 </div>
                 <div class="col-75">
-                    <input type="text" id="datum_vandaag" name="datumVandaag" placeholder="Datum Vandaag...">
+                    <p class="datum_vandaag"> </p>
                 </div>
             </div>
             <div class="row">
@@ -39,22 +40,22 @@
                     <input type="text" id="werkdagen" name="aantal_werkdagen" placeholder="Aantal Werkdagen Productie...">
                 </div>
             </div>
-            <div class="row">
+            <div class="row" id="hider">
                 <div class="col-25">
                     <label for="leverbaar">Productie Leverbaar</label>
                 </div>
                 <div class="col-75">
-                    <textarea id="leverbaar" name="leverbaarProductie" placeholder="Datum... 'Werkweek'" style="height:200px"></textarea>
+                    <p class="leverbaar"></p>
                 </div>
             </div>
             <div class="row">
-                <input type="submit" value="Bereiken">
+                <a class="show" href="#">Bereiken</a>
+                <!-- <input type="submit" class="me" value="Bereiken"> -->
             </div>
         </form>
     </div>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="./oa_datetool_script.js"></script>
+
 </body>
 
 </html>

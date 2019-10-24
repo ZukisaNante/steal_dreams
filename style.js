@@ -4,7 +4,7 @@ export default StyleSheet.create({
   '*': {
     'boxSizing': 'border-box'
   },
-  'input[type=text]': {
+  'input[type="text"]': {
     'width': [{ 'unit': '%H', 'value': 1 }],
     'padding': [{ 'unit': 'px', 'value': 12 }, { 'unit': 'px', 'value': 12 }, { 'unit': 'px', 'value': 12 }, { 'unit': 'px', 'value': 12 }],
     'border': [{ 'unit': 'px', 'value': 1 }, { 'unit': 'string', 'value': 'solid' }, { 'unit': 'string', 'value': '#ccc' }],
@@ -29,22 +29,35 @@ export default StyleSheet.create({
     'padding': [{ 'unit': 'px', 'value': 12 }, { 'unit': 'px', 'value': 12 }, { 'unit': 'px', 'value': 12 }, { 'unit': 'px', 'value': 0 }],
     'display': 'inline-block'
   },
-  'input[type=submit]': {
+  // HIDE SHOW TOGGLE
+  'show': {
     'backgroundColor': '#222222',
     'color': 'white',
     'padding': [{ 'unit': 'px', 'value': 12 }, { 'unit': 'px', 'value': 20 }, { 'unit': 'px', 'value': 12 }, { 'unit': 'px', 'value': 20 }],
     'border': [{ 'unit': 'string', 'value': 'none' }],
     'borderRadius': '4px',
     'cursor': 'pointer',
-    'float': 'left'
+    'float': 'right',
+    'textDecoration': 'none'
   },
-  'input[type=submit]:hover': {
-    'backgroundColor': '222222'
+  'input[type="submit"]': {
+    'backgroundColor': '#222222',
+    'color': 'white',
+    'padding': [{ 'unit': 'px', 'value': 12 }, { 'unit': 'px', 'value': 20 }, { 'unit': 'px', 'value': 12 }, { 'unit': 'px', 'value': 20 }],
+    'border': [{ 'unit': 'string', 'value': 'none' }],
+    'borderRadius': '4px',
+    'cursor': 'pointer',
+    'float': 'right'
+  },
+  'input[type="submit"]:hover': {
+    'backgroundColor': '#000000'
   },
   'container': {
     'borderRadius': '5px',
-    'backgroundColor': '#f2f2f2',
-    'padding': [{ 'unit': 'px', 'value': 20 }, { 'unit': 'px', 'value': 20 }, { 'unit': 'px', 'value': 20 }, { 'unit': 'px', 'value': 20 }]
+    'backgroundColor': '#ffffff',
+    'padding': [{ 'unit': 'px', 'value': 20 }, { 'unit': 'px', 'value': 20 }, { 'unit': 'px', 'value': 20 }, { 'unit': 'px', 'value': 20 }],
+    'border': [{ 'unit': 'px', 'value': 1 }, { 'unit': 'string', 'value': 'solid' }, { 'unit': 'string', 'value': 'black' }],
+    'margin': [{ 'unit': 'px', 'value': 0 }, { 'unit': 'string', 'value': 'auto' }, { 'unit': 'px', 'value': 0 }, { 'unit': 'string', 'value': 'auto' }]
   },
   'col-25': {
     'float': 'left',
@@ -67,4 +80,39 @@ export default StyleSheet.create({
     'clear': 'both'
   },
   // Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other
+  // header h2
+  'nav': {
+    'backgroundColor': '#000000',
+    'color': '#ffffff'
+  },
+  // navbar
+  'ul': {
+    'listStyleType': 'none',
+    'margin': [{ 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': 0 }],
+    'padding': [{ 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': 0 }, { 'unit': 'px', 'value': 0 }],
+    'overflow': 'hidden',
+    'backgroundColor': '#333'
+  },
+  'li': {
+    'float': 'left',
+    'borderRight': [{ 'unit': 'px', 'value': 1 }, { 'unit': 'string', 'value': 'solid' }, { 'unit': 'string', 'value': '#bbb' }]
+  },
+  'li:last-child': {
+    'borderRight': [{ 'unit': 'string', 'value': 'none' }]
+  },
+  'li a': {
+    'display': 'block',
+    'color': 'white',
+    'textAlign': 'center',
+    'padding': [{ 'unit': 'px', 'value': 14 }, { 'unit': 'px', 'value': 16 }, { 'unit': 'px', 'value': 14 }, { 'unit': 'px', 'value': 16 }],
+    'textDecoration': 'none'
+  },
+  'li a:hover:not(active)': {
+    'backgroundColor': '#111'
+  },
+  'active': {
+    'backgroundColor': '#666666'
+  },
+  // end navbar
+  // responsive navbar
 });
