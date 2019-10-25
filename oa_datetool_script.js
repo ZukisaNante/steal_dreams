@@ -6,18 +6,24 @@ $(document).ready(function() {
     deliveryDays();
     delivery();
     $("#hider").hide(); // hides count div
+    $(".me").hide(); // hide button
     $("a.show").on("click", function() {
         $("#hider").toggle();
-
-        // $(".leverbaar").val(n_days);
+        $(".me").toggle(); // show button
     });
-    // check user input
-    $("#werkdagen").keyup(function() {
-        alert($(this).val());
-    });
-
-    /*  $( "#hider" ).hide(); // hides count div */
+    // check if user input changed
+  $('input#werkdagen').change(function(e){
+      alert(e.target.value);
+  });
+  // show input value in the form
+  $('.showHider').submit(function(e){
+      e.preventDefault(); 
+      var dagen = $('input#werkdagen').val();
+      console.log(dagen);
+  });
 });
+
+
 
 // FUNCTIONS //
 
@@ -38,8 +44,10 @@ function todaysDate() {
     $("p.datum_vandaag").html(today);
 
     var date = new Date();
-    console.log(date);
+   
 }
+
+
 
 // RETURNING DELIVERY DAYS
 //                    yyyy-MM-dd hh:mm:ss
@@ -72,8 +80,8 @@ function deliveryDays() {
         if (start.getUTCDay()) n_days = n_days + 1; // not sunday
         start.setUTCHours(24); // add a day
     }
-    $("p.delivery").html(
-        "Uw product zal binnen" + " " + n_days + " " + "dagen geleveerd worden!"
+    $("p.deliver").html(
+        "Uw product kan binnen" + " " + n_days + " " + "dagen geleveerd worden!"
     );
     console.log(n_days); // 12
 }
@@ -93,8 +101,21 @@ function delivery() {
             total_days++;
         }
     }
-    $("p.delivery").html(deliveryDate);
-    $("p.leverbaar").html("Uw product kan geleverd worden op" + deliveryDate);
+    $("p.leverbaar").html("Uw product kan geleverd worden op  " + deliveryDate);
     console.log(today);
     console.log(deliveryDate);
 }
+// onchange event lister
+var result = ' ';
+$('input').change(function(){
+   if (result == ' '){
+       result = $(this).val();
+   }else{
+       result += ',' + $(this).val();
+   }
+    $('p.delivery').html(result);
+})
+$(document).on('change','input', function(){
+    // CODE DIE UIT GEVOERD MOET WORDEN 'ON CHANGE' HIER
+    //$(".pp-comm-input").val("");
+  });
