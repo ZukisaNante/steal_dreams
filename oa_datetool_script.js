@@ -12,15 +12,15 @@ $(document).ready(function() {
         $(".me").toggle(); // show button
     });
     // check if user input changed
-  $('input#werkdagen').change(function(e){
-      alert(e.target.value);
-  });
-  // show input value in the form
-  $('.showHider').submit(function(e){
-      e.preventDefault(); 
-      var dagen = $('input#werkdagen').val();
-      console.log(dagen);
-  });
+    $('input#werkdagen').change(function(e) {
+        alert(e.target.value);
+    });
+    // show input value in the form
+    $('.showHider').submit(function(e) {
+        e.preventDefault();
+        var dagen = $('input#werkdagen').val();
+        console.log(dagen);
+    });
 });
 
 
@@ -44,7 +44,7 @@ function todaysDate() {
     $("p.datum_vandaag").html(today);
 
     var date = new Date();
-   
+
 }
 
 
@@ -101,21 +101,21 @@ function delivery() {
             total_days++;
         }
     }
-    $("p.leverbaar").html("Uw product kan geleverd worden op  " + deliveryDate);
+    $("p.leverbaar").html("Uw product kan geleverd worden op  " + deliveryDate.toLocaleDateString("en-GB"));
     console.log(today);
     console.log(deliveryDate);
 }
 // onchange event lister
 var result = ' ';
-$('input').change(function(){
-   if (result == ' '){
-       result = $(this).val();
-   }else{
-       result += ',' + $(this).val();
-   }
+$('input').change(function() {
+    if (result == ' ') {
+        result = $(this).val();
+    } else {
+        result += ',' + $(this).val();
+    }
     $('p.delivery').html(result);
 })
-$(document).on('change','input', function(){
+$(document).on('change', 'input', function() {
     // CODE DIE UIT GEVOERD MOET WORDEN 'ON CHANGE' HIER
     //$(".pp-comm-input").val("");
-  });
+});
