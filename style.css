@@ -157,3 +157,25 @@ li a:hover:not(.active) {
         float: none;
     }
 }
+
+/* SPACING BETWEEN VERLOF CONTAINER*/
+.verlof-wrapper{
+    margin-top: 30px;
+}
+
+/* HEADER */
+.header{
+    color: white;
+    background-color: #333333;
+    float: left;
+    padding-left: 15px;
+    width: 100%;
+}
+
+/* HEADER RESPONSIVE */
+@media screen and (max-width: 900px) {
+    .header {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
