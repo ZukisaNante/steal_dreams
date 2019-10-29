@@ -15,6 +15,11 @@ $(document).ready(function() {
         // alert(e.target.value);
         delivery();
     });
+	
+    // CLICK OP '.leverdatum' = Toon '.leverdatum-wrapper' //
+    // CLICK OP '.startdatum' = Toon '.startdatum-wrapper' //
+
+	
 });
 
 // FUNCTIONS //
