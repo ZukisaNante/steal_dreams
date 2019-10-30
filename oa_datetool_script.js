@@ -11,7 +11,7 @@ $(document).ready(function() {
 
     $("a.show").on("click", function() {
         $("#hider").show();
-        $("#showHider").valid();
+        //$("#showHider").valid();
     });
     // check if user input changed
     $("input#werkdagen").change(function(e) {
@@ -24,7 +24,7 @@ $(document).ready(function() {
         $(".leverdatum-wrapper").hide();
         $(".startdatum-wrapper").hide();
         $(".startdatum-wrapper").show();
-        $(".showHider").valid();
+        //$(".showHider").valid();
 
     });
 
@@ -37,8 +37,10 @@ $(document).ready(function() {
     // INSERT INPUT VALUES INTO AN ARRAY WITH INVOEREN BUTTON CLICK
     $("a.invoeren").on("click", function() {
         inputDataValues();
-        $(".userVerlof").valid();
+        //$(".userVerlof").valid();
     });
+
+    // USER INPUT VALIDATION
 
 });
 
@@ -116,7 +118,7 @@ function inputDataValues() {
 // FUNCTION USER INPUT VALIDATION
 
 // USER FORM INPUT VALIDATION
-function formValidate() {
+/* function formValidate() {
     $(".showHider").validate({
         rules: {
             werkdagen: 'required',
@@ -132,6 +134,4 @@ function formValidate() {
         }
     });
 
-    console.log(rules);
-
-}
+} */
