@@ -3,7 +3,7 @@
 $(document).ready(function() {
     console.log("ready");
     todaysDate();
-    formValidate();
+    //formValidate();
     // deliveryDays();
     delivery();
     $("#hider").hide(); // hides count div
