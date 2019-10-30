@@ -31,6 +31,11 @@ $(document).ready(function() {
         $(".startdatum-wrapper").hide();
         $(".leverdatum-wrapper").show();
     });
+    // INSERT INPUT VALUES INTO AN ARRAY WITH INVOEREN BUTTON CLICK
+    $("a.invoeren").on("click", function() {
+        inputDataValues();
+    });
+
 });
 
 // FUNCTIONS //
@@ -73,4 +78,15 @@ function delivery() {
         console.log("DELI // " + deliveryDate);
 
     }
+}
+
+// FUNCTION INPUT VALUES
+function inputDataValues() {
+    // STORE INPUT VALUES INTO AN ARRAY
+    var inputValues = [];
+    $('Input').each(function() {
+        inputValues[this.name] = $(this).val();
+    });
+
+    console.log(inputValues['verlof_jaar'], inputValues['verlof_dag'], inputValues['verlof_maand']);
 }
