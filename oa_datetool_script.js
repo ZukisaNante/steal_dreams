@@ -3,7 +3,7 @@
 $(document).ready(function() {
     console.log("ready");
     todaysDate();
-
+    formValidate();
     // deliveryDays();
     delivery();
     $("#hider").hide(); // hides count div
@@ -11,6 +11,7 @@ $(document).ready(function() {
 
     $("a.show").on("click", function() {
         $("#hider").show();
+        $("#showHider").valid();
     });
     // check if user input changed
     $("input#werkdagen").change(function(e) {
@@ -23,6 +24,8 @@ $(document).ready(function() {
         $(".leverdatum-wrapper").hide();
         $(".startdatum-wrapper").hide();
         $(".startdatum-wrapper").show();
+        $(".showHider").valid();
+
     });
 
     //HIDE SHOW CONTAINER WRAPPER ON ONCLICK EVENT
@@ -34,6 +37,7 @@ $(document).ready(function() {
     // INSERT INPUT VALUES INTO AN ARRAY WITH INVOEREN BUTTON CLICK
     $("a.invoeren").on("click", function() {
         inputDataValues();
+        $(".userVerlof").valid();
     });
 
 });
@@ -83,10 +87,51 @@ function delivery() {
 // FUNCTION INPUT VALUES
 function inputDataValues() {
     // STORE INPUT VALUES INTO AN ARRAY
-    var inputValues = [];
+    var verlof_jaar = $("#verlof_jaar").val();
+    var verlof_maand = $("#verlof_maand").val();
+    var verlof_dag = $("#verlof_dag").val();
+    var month = {
+            January: "1",
+            February: "2",
+            March: "3",
+            April: "4",
+            May: "5",
+            June: "6",
+            July: "7",
+            August: "8",
+            September: "9",
+            October: "10",
+            November: "11",
+            December: "12"
+        }
+        //var month_convert = new Date(month);
+    var inputValues = [new Date(verlof_dag + " - " + verlof_maand + " - " + verlof_jaar)];
     $('Input').each(function() {
         inputValues[this.name] = $(this).val();
     });
 
-    console.log(inputValues['verlof_jaar'], inputValues['verlof_dag'], inputValues['verlof_maand']);
+    console.log(inputValues['verlof_dag'], inputValues['verlof_maand'], inputValues['verlof_jaar']);
+}
+
+// FUNCTION USER INPUT VALIDATION
+
+// USER FORM INPUT VALIDATION
+function formValidate() {
+    $(".showHider").validate({
+        rules: {
+            werkdagen: 'required',
+            maand: 'required',
+            jaar: 'required',
+            dag: 'required',
+        },
+        messages: {
+            werkdagen: 'This field is required',
+            maand: 'This field is required',
+            jaar: 'This field is required',
+            dag: 'This field is required',
+        }
+    });
+
+    console.log(rules);
+
 }

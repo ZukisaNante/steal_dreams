@@ -38,7 +38,7 @@
                     <label for="werkdagen">Aantal Werkdagen Productie</label>
                 </div>
                 <div class="col-75">
-                    <input type="text" id="werkdagen" name="aantal_werkdagen" placeholder="Aantal Werkdagen Productie..." required>
+                    <input type="text" id="werkdagen" name="aantal_werkdagen" placeholder="Aantal Werkdagen Productie..." data-validation="number" required>
                 </div>
             </div>
             <div class="row" id="hider" style="display: none;">
@@ -66,7 +66,7 @@
         </div>
         <!-- navbar ends -->
         <!-- form starts -->
-        <form action="" class="showHider">
+        <form action="" class="bereikenBegin">
             <div class="row">
                 <div class="col-25">
                     <label for="datum_vandaag">Datum Vandaag</label>
@@ -80,7 +80,7 @@
                     <label for="werkdagen">Aantal Werkdagen Productie</label>
                 </div>
                 <div class="col-75">
-                    <input type="text" id="werkdagen" name="aantal_werkdagen" placeholder="Aantal Werkdagen Productie..." required>
+                    <input type="text" id="werkdagen" name="aantal_werkdagen" placeholder="Aantal Werkdagen Productie..." data-validation="number" required>
                 </div>
             </div>
             <div class="row" id="hider">
@@ -110,13 +110,13 @@
         </div>
         <!-- navbar ends -->
         <!-- form starts -->
-        <form action="" class="showHider">
+        <form action="" class="userVerlof">
             <div class="row">
                 <div class="col-25">
                     <label for="jaar">Jaar</label>
                 </div>
                 <div class="col-75">
-                    <input type="text" id="jaar" name="verlof_jaar" placeholder="Jaar Toevoegen aub..." required>
+                    <input type="text" id="jaar" name="verlof_jaar" placeholder="Jaar Toevoegen aub..." data-validation="number" required>
                 </div>
             </div>
 
@@ -125,7 +125,7 @@
                     <label for="dag">Dag</label>
                 </div>
                 <div class="col-75">
-                    <input type="text" id="dag" name="verlof_dag" placeholder="Dag Toevoegen aub..." required>
+                    <input type="text" id="dag" name="verlof_dag" placeholder="Dag Toevoegen aub..." data-validation="number" required>
                 </div>
             </div>
 
@@ -134,7 +134,7 @@
                     <label for="maand">Maand</label>
                 </div>
                 <div class="col-75">
-                    <input type="text" id="maand" name="verlof_maand" placeholder="Maand Toevoegen aub..." required>
+                    <input type="text" id="maand" name="verlof_maand" placeholder="Maand Toevoegen aub..." data-validation="number" required>
                 </div>
             </div>
             <!--  <div class="row" id="hider" style="display: none;">
@@ -154,6 +154,8 @@
 
     <!-- JAVASCRIPT LINKS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
     <script src="./oa_datetool_script.js"></script>
 
 </body>
