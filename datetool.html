@@ -38,7 +38,7 @@
                     <label for="werkdagen">Aantal Werkdagen Productie</label>
                 </div>
                 <div class="col-75">
-                    <input type="text" id="werkdagen" name="aantal_werkdagen" placeholder="Aantal Werkdagen Productie..." data-validation="number" required>
+                    <input type="text" id="werkdagen" name="aantal_werkdagen" class="form-control" placeholder="Aantal Werkdagen Productie..." data-validation="number" required>&nbsp;<span id="errmsg"></span>
                 </div>
             </div>
             <div class="row" id="hider" style="display: none;">
@@ -80,7 +80,7 @@
                     <label for="werkdagen">Aantal Werkdagen Productie</label>
                 </div>
                 <div class="col-75">
-                    <input type="text" id="werkdagen" name="aantal_werkdagen" placeholder="Aantal Werkdagen Productie..." data-validation="number" required>
+                    <input type="text" id="werkdagen" name="aantal_werkdagen" class="form-control"  placeholder="Aantal Werkdagen Productie..." data-validation="number" required>&nbsp;<span id="errmsg"></span>
                 </div>
             </div>
             <div class="row" id="hider">
@@ -92,7 +92,7 @@
                 </div>
             </div>
             <div class="row">
-                <a class="show" href="#">INVOEREN</a>
+                <a class="show" href="#">Inoveren</a>
             </div>
         </form>
     </div>
@@ -116,7 +116,8 @@
                     <label for="jaar">Jaar</label>
                 </div>
                 <div class="col-75">
-                    <input type="text" id="jaar" name="verlof_jaar" placeholder="Jaar Toevoegen aub..." data-validation="number" required>
+                    <input type="text" id="jaar" name="verlof_jaar" placeholder="Jaar Toevoegen aub..." class="form-control" onblur="yearValidation(this.value,event)" 
+        onkeypress="yearValidation(this.value,event)" data-validation="number" required>&nbsp;<span id="errmsg"></span>
                 </div>
             </div>
 
@@ -125,7 +126,7 @@
                     <label for="dag">Dag</label>
                 </div>
                 <div class="col-75">
-                    <input type="text" id="dag" name="verlof_dag" placeholder="Dag Toevoegen aub..." data-validation="number" required>
+                    <input type="text" id="dag" name="verlof_dag" placeholder="Dag Toevoegen aub..." class="form-control"  data-validation="number" required>&nbsp;<span id="errmsg"></span>
                 </div>
             </div>
 
@@ -134,17 +135,10 @@
                     <label for="maand">Maand</label>
                 </div>
                 <div class="col-75">
-                    <input type="text" id="maand" name="verlof_maand" placeholder="Maand Toevoegen aub..." data-validation="number" required>
+                    <input type="text" id="maand" name="verlof_maand" placeholder="Maand Toevoegen aub..." class="form-control"  data-validation="number" required>&nbsp;<span id="errmsg"></span>
                 </div>
             </div>
-            <!--  <div class="row" id="hider" style="display: none;">
-                <div class="col-25">
-                    <label for="leverbaar">Maand</label>
-                </div>
-                <div class="col-75">
-                    <p class="leverbaar">leverbaar dagen</p><br>
-                </div>
-            </div> -->
+
             <div class="row">
                 <a class="invoeren" href="#">Inoveren</a>
                 <a class="bekijk_data" href="#">Bekijk Alle Data</a>
@@ -157,6 +151,7 @@
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+    <script src="snbutton.js"></script>
     <script src="./oa_datetool_script.js"></script>
 
 </body>
