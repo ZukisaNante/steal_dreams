@@ -6,33 +6,34 @@ $(document).ready(function() {
     $("#hider").hide(); // hides count div
     $(".startdatum-wrapper").hide(); // hides container rapper
     $("#werkdagen").focus();
-    $("a.show").on("click", function(e) { 
-        if($("input#werkdagen").val() == ""){
+    $("a.show").on("click", function(e) {
+        if ($("input#werkdagen").val() == "") {
             e.preventDefault();
-     
-    //CALLED WHEN THE KEY IS PRESSED
-      $("#werkdagen").keypress(function (e) {
 
-        //if the letter is not digit then display error and don't type anything
-        if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+            //CALLED WHEN THE KEY IS PRESSED
+            $("#werkdagen").keypress(function(e) {
 
-           //display error message
-           $("#errmsg").html("Alleen Cijfers!").show().fadeOut("slow");
-                  return false;
-       }
-      }); } else { $("#hider").show();}
+                //if the letter is not digit then display error and don't type anything
+                if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+
+                    //display error message
+                    $("#errmsg").html("Alleen Cijfers!").show().fadeOut("slow");
+                    return false;
+                }
+            });
+        } else { $("#hider").show(); }
     });
 
     // CHECK IF USER INPUT CHANGED
     $("input#werkdagen").change(function() {
-        $("#werkdagen").keypress(function (e) {
+        $("#werkdagen").keypress(function(e) {
             //if the letter is not digit then display error and don't type anything
             if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
-               //display error message
-               $("#errmsg").html("Alleen Cijfers!").show().fadeOut("slow");
-                      return false;
-           }
-          });
+                //display error message
+                $("#errmsg").html("Alleen Cijfers!").show().fadeOut("slow");
+                return false;
+            }
+        });
 
         delivery();
     });
@@ -54,29 +55,29 @@ $(document).ready(function() {
     });
     // INSERT INPUT VALUES INTO AN ARRAY WITH INVOEREN BUTTON CLICK
     $("a.invoeren").on("click", function(e) {
-        if($("input#jaar").val() == "" || $("input#maand").val() == "" || $("input#dag").val() == "" ){
+        if ($("input#jaar").val() == "" || $("input#maand").val() == "" || $("input#dag").val() == "") {
             e.preventDefault();
-            $("#jaar").keypress(function (e) {
+            $("#jaar").keypress(function(e) {
                 if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
-                   $("#errmsg").html("Alleen Cijfers!").show().fadeOut("slow");
-                          return false;
-               }
-              });
-              $("#maand").keypress(function (e) {
+                    $("#errmsg").html("Alleen Cijfers!").show().fadeOut("slow");
+                    return false;
+                }
+            });
+            $("#maand").keypress(function(e) {
                 if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
-                   $("#errmsg").html("Alleen Cijfers!").show().fadeOut("slow");
-                          return false;
-               }
-              });
+                    $("#errmsg").html("Alleen Cijfers!").show().fadeOut("slow");
+                    return false;
+                }
+            });
 
-              $("#dag").keypress(function (e) {
+            $("#dag").keypress(function(e) {
                 if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
-                   $("#errmsg").html("Alleen Cijfers!").show().fadeOut("slow");
-                          return false;
-               }
-              });
+                    $("#errmsg").html("Alleen Cijfers!").show().fadeOut("slow");
+                    return false;
+                }
+            });
 
-        } else{
+        } else {
             yearValidation();
             inputDataValues();
         }
@@ -106,7 +107,7 @@ function delivery() {
 
         //HOLIDAYS ARRAY
         var holiday = [new Date(currentYear + '-11-01'), new Date(currentYear + '-06-10'), new Date(currentYear + '-11-11'), new Date(currentYear + '-01-01'), new Date(currentYear + '-04-22'), new Date(currentYear + '-12-25'), new Date(currentYear + '-05-30'), new Date(currentYear + '-07-21'), new Date(currentYear + '-08-15'), new Date(currentYear + '-05-01')];
-       
+
         //GET DATE AND CHECK IF IT'S WEEKEND OR NOT, IF YES INCREMENT total_days +1
         deliveryDate = new Date(today.getTime() + days * 24 * 60 * 60 * 1000);
         if (deliveryDate.getDay() == 0 || deliveryDate.getDay() == 6) {
@@ -155,57 +156,60 @@ function inputDataValues() {
 }
 
 
- // Restricts input for each element in the set of matched elements to the given inputFilter.
+// Restricts input for each element in the set of matched elements to the given inputFilter.
 (function($) {
     $.fn.inputFilter = function(inputFilter) {
-      return this.on("input keydown keyup mousedown mouseup select contextmenu drop", function() {
-        if (inputFilter(this.value)) {
-          this.oldValue = this.value;
-          this.oldSelectionStart = this.selectionStart;
-          this.oldSelectionEnd = this.selectionEnd;
-        } else if (this.hasOwnProperty("oldValue")) {
-          this.value = this.oldValue;
-          this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
-        }
-      });
+        return this.on("input keydown keyup mousedown mouseup select contextmenu drop", function() {
+            if (inputFilter(this.value)) {
+                this.oldValue = this.value;
+                this.oldSelectionStart = this.selectionStart;
+                this.oldSelectionEnd = this.selectionEnd;
+            } else if (this.hasOwnProperty("oldValue")) {
+                this.value = this.oldValue;
+                this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+            }
+        });
     };
-  }(jQuery));
-  
-  
-  // INSTALL INPUT FILTERS
-  $("#werkdagen").inputFilter(function(value) {
-    return /^\d*$/.test(value); });
-    $("#jaar").inputFilter(function(value) {
-        return /^\d*$/.test(value); });
-        $("#dag").inputFilter(function(value) {
-            return /^\d*$/.test(value) && (value === "" || parseInt(value) <= 31); });
-  $("#maand").inputFilter(function(value) {
-    return /^\d*$/.test(value) && (value === "" || parseInt(value) <= 12); });
-  
+}(jQuery));
+
+
+// INSTALL INPUT FILTERS
+$("#werkdagen").inputFilter(function(value) {
+    return /^\d*$/.test(value);
+});
+$("#jaar").inputFilter(function(value) {
+    return /^\d*$/.test(value);
+});
+$("#dag").inputFilter(function(value) {
+    return /^\d*$/.test(value) && (value === "" || parseInt(value) <= 31);
+});
+$("#maand").inputFilter(function(value) {
+    return /^\d*$/.test(value) && (value === "" || parseInt(value) <= 12);
+});
+
 
 // YEAR VALIDATION
-function yearValidation(year,ev) {
+function yearValidation(year, ev) {
 
-  var text = /^[0-9]+$/;
-  if(ev.type=="blur" || year.length==4 && ev.keyCode!=8 && ev.keyCode!=46) {
-    if (year != 0) {
-        if ((year != "") && (!text.test(year))) {
+    var text = /^[0-9]+$/;
+    if (ev.type == "blur" || year.length == 4 && ev.keyCode != 8 && ev.keyCode != 46) {
+        if (year != 0) {
+            if ((year != "") && (!text.test(year))) {
 
-            alert("Alleen Cijfers!");
-            return false;
-        }
-
-        if (year.length != 4) {
-            alert("Jaar is niet correct");
-            return false;
-        }
-        var current_year=new Date().getFullYear();
-        if((year < 1920) || (year > current_year))
-            {
-            alert("Het jaar moet tussen 1920 en het huidige jaar liggen");
-            return false;
+                alert("Alleen Cijfers!");
+                return false;
             }
-        return true;
-    } }
-}
 
+            if (year.length != 4) {
+                alert("Jaar is niet correct");
+                return false;
+            }
+            var current_year = new Date().getFullYear();
+            if ((year < 1920) || (year > current_year)) {
+                alert("Het jaar moet tussen 1920 en het huidige jaar liggen");
+                return false;
+            }
+            return true;
+        }
+    }
+}
