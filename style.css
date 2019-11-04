@@ -17,8 +17,28 @@ label {
     display: inline-block;
 }
 
+.array-list {
+    background: #fff;
+}
+
+.array-list li {
+    color: #222;
+    background: #bbb;
+    display: block;
+    padding: 20px;
+    margin: 10px;
+}
+
 
 /* HIDE SHOW TOGGLE */
+
+.invis {
+    display: none;
+    background: #fff;
+    border: 1px solid #222;
+    padding: 20px;
+    margin-top: 30px;
+}
 
 .show {
     background-color: #222222;
@@ -214,3 +234,5 @@ li a:hover:not(.active) {
     float: right;
     text-decoration: none;
 }
+
+
