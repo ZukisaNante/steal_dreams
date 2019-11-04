@@ -187,6 +187,10 @@ $("#maand").inputFilter(function(value) {
     return /^\d*$/.test(value) && (value === "" || parseInt(value) <= 12);
 });
 
+$("#werkdagen").inputFilter(function(value) {
+    return /^\d*$/.test(value) && (value === "" || parseInt(value) <= 31);
+});
+
 
 // YEAR VALIDATION
 function yearValidation(year, ev) {
