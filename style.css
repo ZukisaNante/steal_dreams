@@ -32,12 +32,12 @@ label {
 
 /* HIDE SHOW TOGGLE */
 
-.invis {
+.invis, .vrijdagen {
     display: none;
     background: #fff;
-    border: 1px solid #222;
+    /* border: 1px solid #222;
     padding: 20px;
-    margin-top: 30px;
+    margin-top: 30px; */
 }
 
 .show {
@@ -179,12 +179,14 @@ li a:hover:not(.active) {
 }
 
 
-/* SPACING BETWEEN VERLOF CONTAINER*/
+/* SPACING BETWEEN CONTAINERS*/
 
 .verlof-wrapper {
     margin-top: 60px;
 }
-
+.vrijdagen-wrapper {
+    margin-top: 60px;
+}
 
 /* HEADER */
 
@@ -235,4 +237,30 @@ li a:hover:not(.active) {
     text-decoration: none;
 }
 
+/* EDIT DATA BUTTON */
+
+.edit_data {
+    background-color: #222222;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: left;
+    text-decoration: none;
+}
+
+
+/* DELETE BUTTON */
+
+.delete {
+    background-color: #222222;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+    text-decoration: none;
+}
 

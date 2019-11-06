@@ -7,6 +7,7 @@ $(document).ready(function() {
     showData();
     todaysDate();
     delivery();
+     $(".vrijdagen-wrapper").hide();
     $("#hider").hide(); // hides count div
     $(".startdatum-wrapper").hide(); // hides container rapper
     $("#werkdagen").focus();
@@ -62,10 +63,44 @@ $(document).ready(function() {
     //SHOW HOLIDAY DATES
     $(".bekijk_data").on("click", function() {
         $(".array-list").html("");
+        $(".vrijdagen-wrapper").toggle();
         $(".invis").toggle();
         showDates();
         showData();
+        $( ".vrijdagen-wrapper" ).focus();
     });
+    
+    // DELETE DATA IN THE LIST
+    $(".delete").on("click", function (e) {
+     e.preventDefault();
+     $( "li" ).last().remove();
+     //holiday.pop();
+     console.log(holiday);
+      });
+
+ // EDIT DATA IN THE LIST
+    $(".edit_data").on("click", function (e) {
+     e.preventDefault();
+     $('li').last().html("<input type='text' id='test' value='Hello World'/>");
+    $('#test').focus();
+    event.stopPropagation();
+     //$( "li" ).last().find();
+     //holiday.pop();
+     console.log(holiday);
+     
+      });
+
+      // DELETE ITEMS USING SPAN
+      $(document).on('click','.date_delete',function(){
+     var transaction_id = $(this).attr('id').replace('row', '');
+        alert("Delete these item?" + transaction_id);
+         $(this).parent().remove();  
+         console.log(holiday);
+      });
+    // EDIT ITEMS USING SPAN
+      $("date_edit").on("click", function(){
+
+      });
 
 
     // INSERT INPUT VALUES INTO AN ARRAY WITH INVOEREN BUTTON CLICK
@@ -189,7 +224,7 @@ function showDates() {
 
         index += 1;
         var holi_d = holi.toLocaleDateString("en-GB");
-        $(".array-list").append("<li> Holiday " + index + ": " + holi_d + " </li>");
+        $(".array-list").append("<li> Holiday " + index + ": " + holi_d + " (<span class='date_delete' id='delete_'>Verwijderen </span> | <span class='date_edit'> Bewerken</span>) </li>");
     });
 
 }
