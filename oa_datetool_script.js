@@ -102,8 +102,9 @@ $(document).ready(function() {
         e.preventDefault();
         $(this).parent().html("<input type='text' id='test'/>");
         $('#test').focus();
-        $(this).replaceWith(input);
+        //$(this).replaceWith(input);
         event.stopPropagation();
+        inputDataValues()
     });
 
 
@@ -326,16 +327,3 @@ function arrayDeleteUpdate() {
 }
 
 //EDIT BUTTON CHECK WITH EDITABLE PLUGIN
-$('span.editable').click(function() {
-    var input = $('<input type="text" />', {
-        value: $(this).text()
-    }).click(function() {
-        $.get('editsave.php?tekstny=' + $(this).value(), function(response) {
-            var span = $('span', {
-                text: response
-            });
-            $(this).replaceWith(span);
-        });
-    });
-    $(this).replaceWith(input);
-});
