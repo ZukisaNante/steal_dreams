@@ -70,7 +70,7 @@ $(document).ready(function() {
         $(".vrijdagen-wrapper").focus();
     });
 
-    // DELETE DATA IN THE LIST
+    // DELETE DATA IN THE LIST BUTTON
     $(".delete").on("click", function(e) {
         e.preventDefault();
         $("li").last().remove();
@@ -78,10 +78,10 @@ $(document).ready(function() {
         console.log(holiday);
     });
 
-    // EDIT DATA IN THE LIST
+    // EDIT DATA IN THE LIST BUTTON
     $(".edit_data").on("click", function(e) {
         e.preventDefault();
-        $('li').last().html("<input type='text' id='test' value='Hello World'/>");
+        $(this.$('li')).html("<input type='text' id='test' value='Hello World'/>");
         $('#test').focus();
         event.stopPropagation();
         //$( "li" ).last().find();
@@ -93,13 +93,17 @@ $(document).ready(function() {
     // DELETE ITEMS USING SPAN
     $(document).on('click', '.date_delete', function() {
         var transaction_id = $(this).attr('id').replace('row', '');
-        alert("Delete these item?" + transaction_id);
+        alert("Delete this item?" + transaction_id);
         $(this).parent().remove();
         arrayDeleteUpdate();
     });
     // EDIT ITEMS USING SPAN
-    $("date_edit").on("click", function() {
-
+    $(document).on("click", '.date_edit', function(e) {
+        e.preventDefault();
+        $(this).parent().html("<input type='text' id='test'/>");
+        $('#test').focus();
+        $(this).replaceWith(input);
+        event.stopPropagation();
     });
 
 
@@ -320,3 +324,18 @@ function arrayDeleteUpdate() {
     holiday.splice(indexToRemove, 1);
     console.log(holiday);
 }
+
+//EDIT BUTTON CHECK WITH EDITABLE PLUGIN
+$('span.editable').click(function() {
+    var input = $('<input type="text" />', {
+        value: $(this).text()
+    }).click(function() {
+        $.get('editsave.php?tekstny=' + $(this).value(), function(response) {
+            var span = $('span', {
+                text: response
+            });
+            $(this).replaceWith(span);
+        });
+    });
+    $(this).replaceWith(input);
+});
