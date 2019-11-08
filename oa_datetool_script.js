@@ -7,7 +7,7 @@ $(document).ready(function() {
     showData();
     todaysDate();
     delivery();
-     $(".vrijdagen-wrapper").hide();
+    $(".vrijdagen-wrapper").hide();
     $("#hider").hide(); // hides count div
     $(".startdatum-wrapper").hide(); // hides container rapper
     $("#werkdagen").focus();
@@ -67,40 +67,40 @@ $(document).ready(function() {
         $(".invis").toggle();
         showDates();
         showData();
-        $( ".vrijdagen-wrapper" ).focus();
+        $(".vrijdagen-wrapper").focus();
     });
-    
+
     // DELETE DATA IN THE LIST
-    $(".delete").on("click", function (e) {
-     e.preventDefault();
-     $( "li" ).last().remove();
-     //holiday.pop();
-     console.log(holiday);
-      });
+    $(".delete").on("click", function(e) {
+        e.preventDefault();
+        $("li").last().remove();
+        //holiday.pop();
+        console.log(holiday);
+    });
 
- // EDIT DATA IN THE LIST
-    $(".edit_data").on("click", function (e) {
-     e.preventDefault();
-     $('li').last().html("<input type='text' id='test' value='Hello World'/>");
-    $('#test').focus();
-    event.stopPropagation();
-     //$( "li" ).last().find();
-     //holiday.pop();
-     console.log(holiday);
-     
-      });
+    // EDIT DATA IN THE LIST
+    $(".edit_data").on("click", function(e) {
+        e.preventDefault();
+        $('li').last().html("<input type='text' id='test' value='Hello World'/>");
+        $('#test').focus();
+        event.stopPropagation();
+        //$( "li" ).last().find();
+        //holiday.pop();
+        console.log(holiday);
 
-      // DELETE ITEMS USING SPAN
-      $(document).on('click','.date_delete',function(){
-     var transaction_id = $(this).attr('id').replace('row', '');
+    });
+
+    // DELETE ITEMS USING SPAN
+    $(document).on('click', '.date_delete', function() {
+        var transaction_id = $(this).attr('id').replace('row', '');
         alert("Delete these item?" + transaction_id);
-         $(this).parent().remove();  
-         console.log(holiday);
-      });
+        $(this).parent().remove();
+        arrayDeleteUpdate();
+    });
     // EDIT ITEMS USING SPAN
-      $("date_edit").on("click", function(){
+    $("date_edit").on("click", function() {
 
-      });
+    });
 
 
     // INSERT INPUT VALUES INTO AN ARRAY WITH INVOEREN BUTTON CLICK
@@ -313,3 +313,10 @@ $("#werkdagen").inputFilter(function(value) {
         }
     }
 } */
+
+// DELETE ITEM FROM ARRAY AND RETURN NEW ARRAY LIST
+function arrayDeleteUpdate() {
+    var indexToRemove = $(this.$('li'));
+    holiday.splice(indexToRemove, 1);
+    console.log(holiday);
+}
