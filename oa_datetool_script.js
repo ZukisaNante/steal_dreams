@@ -8,6 +8,7 @@ $(document).ready(function() {
     showData();
     todaysDate();
     delivery();
+    $("#hide_me").hide();
     $(".vrijdagen-wrapper").hide();
     $("#hider").hide(); // hides count div
     $(".startdatum-wrapper").hide(); // hides container rapper
@@ -154,6 +155,29 @@ $(document).ready(function() {
             inputDataValues();
         }
     });
+
+    // BEREKEN STARTDATUM FORM
+
+    // DATEPICKER UI
+    $(function() {
+        $("#datepicker").datepicker({
+            dateFormat: "dd/mm/yy",
+            changeMonth: true,
+            changeYear: true,
+            minDate: 0,
+            //maxDate: "+1M +31D"
+        });
+    });
+
+    // BEREKEN RESULTAAT
+    $(".show_me").on("click", function() {
+        $("#hide_me").show();
+
+
+
+    });
+
+
 });
 
 // FUNCTIONS //
@@ -176,8 +200,6 @@ function delivery() {
     var total_days = business_days; //will be used by the for loop
     for (var days = 1; days <= total_days; days++) {
         var currentYear = (new Date).getFullYear();
-
-        //HOLIDAYS ARRAY
 
 
         //GET DATE AND CHECK IF IT'S WEEKEND OR NOT, IF YES INCREMENT total_days +1
@@ -362,3 +384,5 @@ function saveData() {
     console.log(holiday);
     //console.log(inputValues);
 }
+
+// BEREKEN STARTDATUM FUCTIE

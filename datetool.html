@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="./style.css">
 </head>
 
@@ -69,10 +70,11 @@
         <form action="" class="bereikenBegin">
             <div class="row">
                 <div class="col-25">
-                    <label for="datum_vandaag">Datum Vandaag</label>
+                    <label for="datum_vandaag">Verwachten Datum</label>
                 </div>
                 <div class="col-75">
-                    <p class="datum_vandaag"> </p>
+                    <p><input type="text" id="datepicker" name="verwachten_datum" class="form-control" placeholder="Verwachten Datum..." data-validation="number" required>&nbsp;<span id="errmsg"></span></p>
+                    <!-- <input type="text" id="verwachten_datum" name="verwachten_datum" class="form-control" placeholder="Verwachten Datum..." data-validation="number" required>&nbsp;<span id="errmsg"></span> -->
                 </div>
             </div>
             <div class="row">
@@ -80,19 +82,19 @@
                     <label for="werkdagen">Aantal Werkdagen Productie</label>
                 </div>
                 <div class="col-75">
-                    <input type="text" id="werkdagen" name="aantal_werkdagen" class="form-control" placeholder="Aantal Werkdagen Productie..." data-validation="number" required>&nbsp;<span id="errmsg"></span>
+                    <input type="text" id="werkdagen_startdatum" name="aantal_werkdagen" class="form-control" placeholder="Aantal Werkdagen Productie..." data-validation="number" required>&nbsp;<span id="errmsg"></span>
                 </div>
             </div>
-            <div class="row" id="hider">
+            <div class="row" id="hide_me">
                 <div class="col-25">
                     <label for="leverbaar">Productie Leverbaar</label>
                 </div>
                 <div class="col-75">
-                    <p class="leverbaar">leverbaar dagen</p><br>
+                    <p class="leverbaar_startdatum">leverbaar dagen</p><br>
                 </div>
             </div>
             <div class="row">
-                <a class="show" href="#">Inoveren</a>
+                <a class="show_me" href="#">Bereken</a>
             </div>
         </form>
     </div>
@@ -187,6 +189,7 @@
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="./oa_datetool_script.js"></script>
 
 </body>
