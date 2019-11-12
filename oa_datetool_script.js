@@ -1,4 +1,5 @@
 // SCRIPT //
+var totalInputs = 0;
 var today = new Date();
 var currentYear = (new Date).getFullYear();
 var holiday = [new Date(currentYear + '-11-01'), new Date(currentYear + '-06-10'), new Date(currentYear + '-11-11'), new Date(currentYear + '-01-01'), new Date(currentYear + '-04-22'), new Date(currentYear + '-12-25'), new Date(currentYear + '-05-30'), new Date(currentYear + '-07-21'), new Date(currentYear + '-08-15'), new Date(currentYear + '-05-01')];
@@ -100,12 +101,28 @@ $(document).ready(function() {
     // EDIT ITEMS USING SPAN
     $(document).on("click", '.date_edit', function(e) {
         e.preventDefault();
-        $(this).parent().html("<input type='text' id='test'/>");
+        $(this).parent().html("<input type='text' id='test'/> (<span class='date_delete' id='delete_'>Verwijderen </span> | <span class='date_edit'> Bewerken</span> | <span class='date_opslaan' style = 'display: none;'> Opslaan</span>)");
         $('#test').focus();
+        $('span.date_opslaan').show();
         //$(this).replaceWith(input);
         event.stopPropagation();
         inputDataValues()
     });
+
+    // SAVE BUTTON
+    $(document).on("click", '.date_opslaan', function(e) {
+        e.preventDefault();
+
+        console.log(holiday);
+        holiday++;
+        // totalInputs++;
+        // var inputText = $("test").val();
+        // //var id = "ca" + totalInputs;
+        // $(".array-list").append("<span id='" + 'id' + "'>" + inputText + "</span>");
+        saveData();
+        showDates();
+    });
+
 
 
     // INSERT INPUT VALUES INTO AN ARRAY WITH INVOEREN BUTTON CLICK
@@ -229,7 +246,7 @@ function showDates() {
 
         index += 1;
         var holi_d = holi.toLocaleDateString("en-GB");
-        $(".array-list").append("<li> Holiday " + index + ": " + holi_d + " (<span class='date_delete' id='delete_'>Verwijderen </span> | <span class='date_edit'> Bewerken</span>) </li>");
+        $(".array-list").append("<li> Holiday " + index + ": " + holi_d + " (<span class='date_delete' id='delete_'>Verwijderen </span> | <span class='date_edit'> Bewerken</span> | <span class='date_opslaan' style = 'display: none;'> Opslaan</span>) </li>");
     });
 
 }
@@ -326,4 +343,22 @@ function arrayDeleteUpdate() {
     console.log(holiday);
 }
 
-//EDIT BUTTON CHECK WITH EDITABLE PLUGIN
+//SAVE BUTTON
+function saveData() {
+    var inputText = $("#test").val();
+    var inputText_str = String(inputText);
+    var inputValue = new Date(inputText_str); //.toLocaleDateString("en-GB");
+
+    if (inputText == "") {
+        alert("insert date!")
+    } else if (inputText == true) {
+        $("#test").append(inputValue + "(<span class='date_delete' id='delete_'>Verwijderen </span> | <span class='date_edit'> Bewerken</span> | <span class='date_opslaan' style = 'display: none;'> Opslaan</span>) </li>");
+        holiday.push(inputValue);
+        holiday++;
+        //var id = "ca" + totalInputs;
+
+    }
+    console.log(inputValue);
+    console.log(holiday);
+    //console.log(inputValues);
+}
