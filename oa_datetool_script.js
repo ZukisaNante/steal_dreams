@@ -72,26 +72,6 @@ $(document).ready(function() {
         $(".vrijdagen-wrapper").focus();
     });
 
-    // DELETE DATA IN THE LIST BUTTON
-    $(".delete").on("click", function(e) {
-        e.preventDefault();
-        $("li").last().remove();
-        //holiday.pop();
-        console.log(holiday);
-    });
-
-    // EDIT DATA IN THE LIST BUTTON
-    $(".edit_data").on("click", function(e) {
-        e.preventDefault();
-        $(this.$('li')).html("<input type='text' id='test' value='Hello World'/>");
-        $('#test').focus();
-        event.stopPropagation();
-        //$( "li" ).last().find();
-        //holiday.pop();
-        console.log(holiday);
-
-    });
-
     // DELETE ITEMS USING SPAN
     $(document).on('click', '.date_delete', function() {
         var transaction_id = $(this).attr('id').replace('row', '');
@@ -99,32 +79,6 @@ $(document).ready(function() {
         $(this).parent().remove();
         arrayDeleteUpdate();
     });
-    // EDIT ITEMS USING SPAN
-    $(document).on("click", '.date_edit', function(e) {
-        e.preventDefault();
-        $(this).parent().html("<input type='text' id='test'/> (<span class='date_delete' id='delete_'>Verwijderen </span> | <span class='date_edit'> Bewerken</span> | <span class='date_opslaan' style = 'display: none;'> Opslaan</span>)");
-        $('#test').focus();
-        $('span.date_opslaan').show();
-        //$(this).replaceWith(input);
-        event.stopPropagation();
-        inputDataValues()
-    });
-
-    // SAVE BUTTON
-    $(document).on("click", '.date_opslaan', function(e) {
-        e.preventDefault();
-
-        console.log(holiday);
-        holiday++;
-        // totalInputs++;
-        // var inputText = $("test").val();
-        // //var id = "ca" + totalInputs;
-        // $(".array-list").append("<span id='" + 'id' + "'>" + inputText + "</span>");
-        saveData();
-        showDates();
-    });
-
-
 
     // INSERT INPUT VALUES INTO AN ARRAY WITH INVOEREN BUTTON CLICK
     $("a.invoeren").on("click", function(e) {
@@ -151,7 +105,7 @@ $(document).ready(function() {
             });
 
         } else {
-            yearValidation(year, ev);
+            // yearValidation(year, ev);
             inputDataValues();
         }
     });
@@ -162,8 +116,8 @@ $(document).ready(function() {
     $(function() {
         $("#datepicker").datepicker({
             dateFormat: "dd/mm/yy",
-            changeMonth: true,
-            changeYear: true,
+            //changeMonth: true,
+            //changeYear: true,
             minDate: 0,
             //maxDate: "+1M +31D"
         });
@@ -172,10 +126,8 @@ $(document).ready(function() {
     // BEREKEN RESULTAAT
     $(".show_me").on("click", function() {
         $("#hide_me").show();
-
         delivery_startdatum();
     });
-
 
 });
 
@@ -185,7 +137,6 @@ $(document).ready(function() {
 function todaysDate() {
     var d = new Date();
     var td = d.toLocaleDateString("en-GB");
-
     $("p.datum_vandaag").html(td);
 }
 
@@ -221,12 +172,6 @@ function delivery() {
 }
 
 
-
-
-
-
-
-
 // FUNCTION INPUT VALUES
 function inputDataValues() {
 
@@ -238,36 +183,20 @@ function inputDataValues() {
     var verlof_maand_str = String(verlof_maand);
     var verlof_dag = $("#dag").val();
     var verlof_dag_str = String(verlof_dag);
-    //var month_convert = new Date(month);
-
-    // NEW HOLIDAY
-
-
-    /* var inputValues = [((new Date).getFullYear(verlof_jaar) + " / " + (new Date).getMonth(verlof_maand) + " / " + (new Date).getDay(verlof_dag))]; */
-
-
     var inputValues = new Date(verlof_jaar_str + '-' + verlof_maand_str + '-' + verlof_dag_str);
-
-    //var inputValues = new Date(currentYear + '-05-30')
-
     var pushed = holiday.push(inputValues);
-    //console.log(holidayADD);
-
-
     console.log(inputValues['verlof_dag'], inputValues['verlof_maand'], inputValues['verlof_jaar']);
     console.log(pushed);
     JSON.stringify(holiday);
     console.log(holiday);
-    //JSON.stringify(holiday);
 }
 
 function showDates() {
 
     $.each(holiday, function(index, holi) {
-
         index += 1;
         var holi_d = holi.toLocaleDateString("en-GB");
-        $(".array-list").append("<li> Holiday " + index + ": " + holi_d + " (<span class='date_delete' id='delete_'>Verwijderen </span> | <span class='date_edit'> Bewerken</span> | <span class='date_opslaan' style = 'display: none;'> Opslaan</span>) </li>");
+        $(".array-list").append("<li> Holiday " + index + ": " + holi_d + " | " + "<span  class='date_delete' id='delete_'  >Verwijderen </span> </li>");
     });
 
 }
@@ -332,7 +261,7 @@ $("#werkdagen").inputFilter(function(value) {
 
 
 // YEAR VALIDATION
-function yearValidation(year, ev) {
+/* function yearValidation(year, ev) {
 
     var text = /^[0-9]+$/;
     if (ev.type == "blur" || year.length == 4 && ev.keyCode != 8 && ev.keyCode != 46) {
@@ -355,7 +284,7 @@ function yearValidation(year, ev) {
             return true;
         }
     }
-}
+} */
 
 // DELETE ITEM FROM ARRAY AND RETURN NEW ARRAY LIST
 function arrayDeleteUpdate() {
@@ -373,7 +302,7 @@ function saveData() {
     if (inputText == "") {
         alert("insert date!")
     } else if (inputText == true) {
-        $("#test").append(inputValue + "(<span class='date_delete' id='delete_'>Verwijderen </span> | <span class='date_edit'> Bewerken</span> | <span class='date_opslaan' style = 'display: none;'> Opslaan</span>) </li>");
+        $("#test").append(inputValue + "(<span class='date_delete' id='delete_'>Verwijderen </span>) </li>");
         holiday.push(inputValue);
         holiday++;
         //var id = "ca" + totalInputs;
@@ -389,6 +318,7 @@ function saveData() {
 function delivery_startdatum() {
 
     var today = new Date($("#datepicker").datepicker("getDate"));
+    var thisDay = new Date();
     var business_days = $("#werkdagen_startdatum").val();
     console.log(business_days);
     var deliveryDate = today; //will be incremented by the for loop
@@ -411,8 +341,14 @@ function delivery_startdatum() {
             }
         }
 
-        $('p.leverbaar_startdatum').html("Uw product kan geleverd worden op: " + deliveryDate.toLocaleDateString("en-GB"));
-        console.log("DELI // " + deliveryDate);
+        if (deliveryDate < thisDay) {
+            alert("Uw product kan niet op deze termijn geleverd worden");
+        } else {
+            $('p.leverbaar_startdatum').html("Uw product kan geleverd worden op: " + deliveryDate.toLocaleDateString("en-GB"));
+            console.log("DELI // " + deliveryDate);
+        }
+
+
 
     }
 }

@@ -86,6 +86,12 @@ input[type="submit"]:hover {
     margin-top: 6px;
 }
 
+.col {
+    float: left;
+    width: 100%;
+    margin-top: 6px;
+}
+
 
 /* Clear floats after the columns */
 
@@ -280,4 +286,11 @@ li a:hover:not(.active) {
     cursor: pointer;
     float: right;
     text-decoration: none;
+}
+
+
+/* DATE DELETE MOUSEOVER */
+
+.date_delete {
+    cursor: pointer;
 }
