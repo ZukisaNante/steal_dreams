@@ -29,6 +29,13 @@ label {
     margin: 10px;
 }
 
+.array-list {
+    display: table;
+    background: #fff;
+    /* Allow the centering to work */
+    margin: 0 auto;
+}
+
 
 /* HIDE SHOW TOGGLE */
 

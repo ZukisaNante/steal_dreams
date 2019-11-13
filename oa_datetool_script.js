@@ -194,9 +194,9 @@ function inputDataValues() {
 function showDates() {
 
     $.each(holiday, function(index, holi) {
-        index += 1;
+        //index += 1;
         var holi_d = holi.toLocaleDateString("en-GB");
-        $(".array-list").append("<li> Holiday " + index + ": " + holi_d + " | " + "<span  class='date_delete' id='delete_'  >Verwijderen </span> </li>");
+        $(".array-list").append("<li> " + holi_d + " | " + "<span  class='date_delete' id='delete_'  >Verwijderen </span> </li>");
     });
 
 }
