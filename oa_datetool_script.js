@@ -151,7 +151,7 @@ $(document).ready(function() {
             });
 
         } else {
-            // yearValidation(year, ev);
+            yearValidation(year, ev);
             inputDataValues();
         }
     });
@@ -173,8 +173,7 @@ $(document).ready(function() {
     $(".show_me").on("click", function() {
         $("#hide_me").show();
 
-
-
+        delivery_startdatum();
     });
 
 
@@ -333,7 +332,7 @@ $("#werkdagen").inputFilter(function(value) {
 
 
 // YEAR VALIDATION
-/* function yearValidation(year, ev) {
+function yearValidation(year, ev) {
 
     var text = /^[0-9]+$/;
     if (ev.type == "blur" || year.length == 4 && ev.keyCode != 8 && ev.keyCode != 46) {
@@ -356,7 +355,7 @@ $("#werkdagen").inputFilter(function(value) {
             return true;
         }
     }
-} */
+}
 
 // DELETE ITEM FROM ARRAY AND RETURN NEW ARRAY LIST
 function arrayDeleteUpdate() {
@@ -386,3 +385,34 @@ function saveData() {
 }
 
 // BEREKEN STARTDATUM FUCTIE
+// COUNT DATA AND EXCLUDE WEEKENDS AND HOLIDAYS
+function delivery_startdatum() {
+
+    var today = new Date($("#datepicker").datepicker("getDate"));
+    var business_days = $("#werkdagen_startdatum").val();
+    console.log(business_days);
+    var deliveryDate = today; //will be incremented by the for loop
+    console.log(deliveryDate);
+    var total_days = business_days; //will be used by the for loop
+    for (var days = 1; days <= total_days; days++) {
+        var currentYear = (new Date).getFullYear();
+
+
+        //GET DATE AND CHECK IF IT'S WEEKEND OR NOT, IF YES INCREMENT total_days +1
+        deliveryDate = new Date(today.getTime() - days * 24 * 60 * 60 * 1000);
+        if (deliveryDate.getDay() == 0 || deliveryDate.getDay() == 6) {
+            total_days++;
+        }
+        //GET HOLIDAYS AND CHECK TO SEE IF IT'S A HOLIDAY OR NOT, IF YES INCREMENT total_days +1
+        for (var i = 0; i < holiday.length; i++) {
+            if (deliveryDate.toLocaleDateString("en-GB") == holiday[i].toLocaleDateString("en-GB")) {
+                console.log("SUCCES!!");
+                total_days++;
+            }
+        }
+
+        $('p.leverbaar_startdatum').html("Uw product kan geleverd worden op: " + deliveryDate.toLocaleDateString("en-GB"));
+        console.log("DELI // " + deliveryDate);
+
+    }
+}
